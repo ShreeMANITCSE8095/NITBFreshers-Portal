@@ -2,6 +2,8 @@
 
 A full-stack, highly scalable academic resource management system designed specifically for MANIT Bhopal students. Built to deliver study materials efficiently, the portal has a proven track record of sustaining 1000+ concurrent users during peak examination periods through smart traffic management and dynamic frontend rendering. 
 
+**NITBFreshers Study Portal:** https://nitbfreshers.42web.io/
+
 ## Key Features
 
 * **High Concurrency & Load Management:** Proven to handle massive traffic spikes (1000+ concurrent users). Includes automated traffic redirection to lightweight backup servers during peak load times.

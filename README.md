@@ -24,3 +24,5 @@ A full-stack, highly scalable academic resource management system designed speci
 * **File Handling:** `resource_viewer.php` (Document rendering engine).
 * **Load Management:** `dashboard_NITBFRESHERS3.php`, `index_NITBFRESHERS3.php` (Traffic redirection scripts).
 * **Access Control:** `bannedusers.txt`, `index_banned.html` (Restriction protocols).
+
+**Note for Developers/Recruiters:** The db_connection.php, bannedusers.txt, and ChatBot API files have been intentionally excluded from this public repository for security and privacy reasons. The codebase relies on these files to function locally.

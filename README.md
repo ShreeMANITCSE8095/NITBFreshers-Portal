@@ -1,30 +1,49 @@
 # NITBFreshers Study Portal 
 
-A full-stack, highly scalable academic resource management system designed specifically for MANIT Bhopal students. Built to deliver study materials efficiently, the portal has a proven track record of sustaining 1000+ concurrent users during peak examination periods through smart traffic management and dynamic frontend rendering. 
-
-**NITBFreshers Study Portal:** https://nitbfreshers.42web.io/
+The **NITBFreshers Study Portal** is an independently developed, student-run web platform designed to supplement academic resources for B.Tech students at Maulana Azad National Institute of Technology (MANIT), Bhopal. Built to solve the absence of a centralised academic hub, it provides authenticated access to previous year question papers (PYQs), lecture notes, subject-wise study materials, and a custom attendance tracking system.
 
 ## Key Features
 
-* **High Concurrency & Load Management:** Proven to handle massive traffic spikes (1000+ concurrent users). Includes automated traffic redirection to lightweight backup servers during peak load times.
-* **Secure Authentication & Account Management:** Features a robust login system that validates specific Scholar Number formats, protected by http-only cookies and securely generated session tokens. Includes self-service password recovery logs and secure password updating functionality.
-* **Dynamic Frontend & State Preservation:** Utilizes Vanilla JS and the Fetch API to load study groups, subjects, and nested folders asynchronously without page reloads. Preserves user navigation state across sessions using `sessionStorage` and includes a Dark/Light mode toggle for better UX.
-* **Advanced Resource Viewer:** Features a custom document viewer supporting native PDF rendering (via `pdf.js`), Google Drive viewer integration, and automated conversion of Dropbox URLs for direct, embedded access.
-* **Comprehensive Security & Logging:** Implements strict access control by checking user credentials against a dynamically read banned users list. Logs all critical events (logins, logouts, resource views, and password resets) along with client IP addresses and OS details to the database. 
-* **Anti-Scraping Measures:** Deploys custom JavaScript across the application to disable right-click, drag-and-drop, specific keyboard shortcuts (like Ctrl+S), and automatically closes the window if Developer Tools are opened.
+* **Secure Authentication:** Scholar Number-based login with dual-layer security (PHP native sessions + secure HttpOnly persistent cookies for a 7-day "Keep me logged in" feature).
+* **Dynamic Study Material Browser:** A responsive, three-tier navigation system (Group → Subject → Folder → File) backed entirely by the server filesystem, requiring no database updates to add new materials.
+* **Smart Attendance Tracker:** Allows students to self-record daily class attendance on a per-subject basis. It automatically calculates current percentages and advises on the exact number of classes a student needs to attend (or can afford to miss) to maintain MANIT's mandatory 75% threshold.
+* **Student Contribution System:** Authenticated students can submit study materials (PDFs, PPTs, images) through the dashboard, which enter a pending queue for admin review and approval.
+* **Load Balancing & Traffic Routing:** A built-in traffic redirection system routes students to different mirrored server instances based on their Roll Number group (MT or ST) to manage server load on shared hosting.
+* **Comprehensive Portal Manager (Admin Panel):** An independent, authenticated admin dashboard to manage announcements, process student uploads, handle password resets, review access logs, and trigger emergency maintenance mode.
 
-## 💻 Tech Stack
-* **Frontend:** HTML5, CSS3, JavaScript (Vanilla JS, Fetch API).
-* **Backend:** PHP (Procedural with Prepared Statements for SQL injection prevention).
+## Technology Stack
+
+* **Backend:** PHP (Procedural, no Frameworks).
 * **Database:** MySQL.
-* **Infrastructure:** Hosted on Free Web Hosting (InfinityFree) with optimized routing.
+* **Frontend:** Tailwind CSS, Lucide Icons, Vanilla JavaScript.
+* **Storage Strategy:** Server filesystem for study materials (`/study_material/`) via FileZilla FTP.
+* **File Rendering:** PDF.js (desktop) and Google Docs Viewer (mobile/PPTs).
 
-## 📂 Core Project Structure
-* **Authentication:** `index.php` (Login gateway), `logout.php` (Session destruction), `forget_password.php`, `change_password.php` (Credential management).
-* **Dashboard & UI:** `dashboard.php`, `dashboard.js`, `style.css` (Core user interface and state management).
-* **APIs:** `fetch_subjects.php`, `fetch_resources.php` (JSON endpoints for dynamic file system traversal).
-* **File Handling:** `resource_viewer.php` (Document rendering engine).
-* **Load Management:** `dashboard_NITBFRESHERS3.php`, `index_NITBFRESHERS3.php` (Traffic redirection scripts).
-* **Access Control:** `bannedusers.txt`, `index_banned.html` (Restriction protocols).
+## System Architecture
 
-**Note for Developers/Recruiters:** The db_connection.php, bannedusers.txt, and ChatBot API files have been intentionally excluded from this public repository for security and privacy reasons. The codebase relies on these files to function locally.
+### Multi-Instance Hosting
+Due to free shared hosting constraints, the portal is architected across three instances:
+* **Primary:** Main portal handling login and routing.
+* **Mirror 1:** Overflow portal for the MT group (Sections A-E).
+* **Mirror 2:** Overflow portal for the ST group (Sections F-J).
+
+### Content Management
+The portal relies on the filesystem as the content database. The PHP API endpoints (`fetch_subjects.php` and `fetch_resources.php`) dynamically read directory structures in real-time, meaning admins can add new notes simply by dropping files into the correct folder via FTP. Configuration states (maintenance mode, global notices, allowed users) are managed via flat files (`.json` and `.txt`) to eliminate unnecessary database calls.
+
+## Security Measures
+
+* **Session Management:** Uses `session_regenerate_id(true)` to prevent fixation attacks.
+* **Database Queries:** All queries utilize `mysqli` prepared statements to prevent SQL Injection.
+* **Path Traversal Protection:** API endpoints use `basename()` and `realpath()` to sanitize paths and lock file access strictly to the `study_material` directory.
+* **Rate Limiting:** Student file contributions are strictly limited to 10 uploads per day per Scholar Number.
+
+## Team & Contributors
+
+This project was developed by:
+* **Devansh Soni** (3rd Year, ECE)
+* **Tanay Sharma** (2nd Year, CSE)
+* **Shree Pandit** (2nd Year, CSE)
+
+## Legal & Disclaimer
+
+This is a student-run, unofficial initiative. Scholar Numbers are used solely for portal functionality and personalization. The attendance tracker relies on self-reported data and is a personal utility, not an official academic record.

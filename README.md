@@ -39,7 +39,8 @@ The portal relies on the filesystem as the content database. The PHP API endpoin
 
 ## Documentation
 
-[View Full Functional Documentation](./NITBFreshers_Portal.pdf)
+Dive deep into the System Architecture, Database Schema, and Internal Workflows. 
+[Read the NITBFreshers Portal Functional Documentation](./NITBFreshers%20Portal%20Documentation.pdf)
 
 ## Team & Contributors
 

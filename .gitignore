@@ -1,1 +1,17 @@
+<?php
+function db_connect() {
+    $host = 'your_mysql_host';        // e.g. sql100.infinityfree.com
+    $user = 'your_db_username';       // e.g. if0_xxxxxxxx
+    $password = 'your_db_password';   // Your database password
+    $dbname = 'your_db_name';         // e.g. if0_xxxxxxxx_student_portal
+
+    $conn = new mysqli($host, $user, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    return $conn;
+}
+?>
 

@@ -37,6 +37,10 @@ The portal relies on the filesystem as the content database. The PHP API endpoin
 * **Path Traversal Protection:** API endpoints use `basename()` and `realpath()` to sanitize paths and lock file access strictly to the `study_material` directory.
 * **Rate Limiting:** Student file contributions are strictly limited to 10 uploads per day per Scholar Number.
 
+## Documentation
+
+[View Full Functional Documentation](./NITBFreshers_Portal.pdf)
+
 ## Team & Contributors
 
 This project was developed by:

@@ -1,0 +1,17 @@
+{
+    "status": "OFF",
+    "schema": [
+        {
+            "id": "694f93e1bb064",
+            "text": "How can we improve?",
+            "type": "text",
+            "options": ""
+        },
+        {
+            "id": "694f93e1bb068",
+            "text": "How is Shree Pandit Sir?",
+            "type": "mcq",
+            "options": "5, 4, 3, 2, 1"
+        }
+    ]
+}

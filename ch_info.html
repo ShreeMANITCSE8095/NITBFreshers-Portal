@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatBot Utility</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100vh;
+    }
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2 {
+      color: #4CAF50;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    ul li {
+      margin-bottom: 10px;
+    }
+    .warning {
+      background-color: #ffe6e6;
+      border-left: 5px solid #ff4d4d;
+      padding: 10px;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+    .button-container {
+      text-align: center;
+      margin: 20px;
+    }
+    .start-button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .start-button:hover {
+      background-color: #45a049;
+    }
+    .back-button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: hsl(0, 79%, 53%);
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .back-button:hover {
+      background-color: #cb3d3d;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <center><h2 style="color: red;">READ THIS!</h2></center>
+    <h2>What is this ChatBot?</h2>
+    <p>
+      The ChatBot is a tool designed to assist you, much like any AI platform such as ChatGPT. However, the unique aspect is that the bot has been embedded directly into this website for your convenience. It is tailored for quick interactions and resolving queries.
+    </p>
+
+    <h2>Limitations</h2>
+    <ul>
+      <li>The bot <strong>cannot access your screen</strong>. For example, it cannot explain slides or visual content currently displayed on your screen to maintain privacy.</li>
+      <li>The bot <strong>does not provide direct resources</strong> like BEEE PYQs. However, you can paste questions directly into the chat, and it will attempt to solve them.</li>
+      <li>Correctness of responses is <strong>not guaranteed</strong>, as the bot relies on available data and algorithms.</li>
+    </ul>
+
+    <h2>How to Use the ChatBot</h2>
+    <ul>
+      <li>The bot <strong>remembers your chat history</strong> for the duration of your browsing session on this device.</li>
+      <li>Once you restart your browser, all previous chats will be cleared.</li>
+      <li>Ask your questions or doubts, but ensure they comply with the rules outlined below.</li>
+    </ul>
+
+    <div class="warning">
+      <h3>Important Warning:</h3>
+      <ul>
+        <li>All questions and doubts you submit are <strong>monitored</strong>.</li>
+        <li>Asking offensive questions or using personal information-related keywords is strictly <strong>banned</strong>.</li>
+        <li>Chats for each session are mapped to your Scholar Number and System ID.<strong> Severe violations will result in a ban for the rest of the semester.</strong></li>
+      </ul>
+    </div>
+  </main>
+  <div class="button-container">
+    
+    <a href="acadbuddy.php" class="start-button">Start ChatBot</a>
+    <button class="back-button" onclick="window.history.back();">Back</button>
+  </div>
+</body>
+</html>
